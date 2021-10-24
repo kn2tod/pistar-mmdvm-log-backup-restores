@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup MMDVM log files every 10 mins
+ 
+[Timer]
+OnCalendar=*-*-* *:00/10
+Persistent=true
+ 
+[Install]
+WantedBy=timers.target
+ 

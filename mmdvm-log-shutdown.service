@@ -1,0 +1,13 @@
+[Unit]
+Description=Backup MMDVM log files at Shutdown/Reboot
+DefaultDependencies=no
+Before=shutdown.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/pistar-mmdvm-log-backups -r
+TimeoutStartSec=3
+ 
+[Install]
+WantedBy=shutdown.target
+ 

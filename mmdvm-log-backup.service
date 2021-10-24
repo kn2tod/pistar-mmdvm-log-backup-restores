@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup MMDVM log files
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/pistar-mmdvm-log-backups
+ 
+[Install]
+WantedBy=multi-user.target
+ 

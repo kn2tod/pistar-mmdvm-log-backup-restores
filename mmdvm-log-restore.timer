@@ -1,0 +1,9 @@
+[Unit]
+Description=Restore MMDVM log files on startup
+ 
+[Timer]
+OnStartupSec=10
+ 
+[Install]
+WantedBy=default.target
+ 
