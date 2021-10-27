@@ -149,6 +149,15 @@ echo 'fi'                                                              >> pistar
 #=================================================================================================================
 sudo chmod +x         pistar-mmdvm-log-backup-age
 sudo chown root:staff pistar-mmdvm-log-backup-age
+#=================================================================================================================
+cd /etc/cron.daily
+echo '#!/bin/bash'                                                      > pistar-daily-mmdvm-log-backup-age
+echo '# Age MMDVM log backups'                                         >> pistar-daily-mmdvm-log-backup-age
+echo '/usr/local/sbin/pistar-mmdvm-log-backup-age'                     >> pistar-daily-mmdvm-log-backup-age
+echo 'exit 0'                                                          >> pistar-daily-mmdvm-log-backup-age
+#=================================================================================================================
+sudo chmod +x         pistar-daily-mmdvm-log-backup-age
+sudo chown root:root  pistar-daily-mmdvm-log-backup-age
 #
 #rpi-ro
 if [ "$fs" == "ro" ]; then
