@@ -29,13 +29,9 @@ then
 Alternately, you can simply clone this project:
 
  rpi-rw
-
  git clone https://github.com/kn2tod/pistar-mmdvm-log-backup-restores.git
-
  cd pistar-mmdvm-log-backup-restores
-
  sudo bash Build-MMDVM-Log-Backup-Restore-Tasks.sh
-
  sudo bash Build-MMDVM-Log-Systemd-Tasks
 
 (These two build scripts can be rerun as needed to incorporate any changes to the process.)
@@ -80,7 +76,6 @@ when the normal nightly Pi-Star update processing kicks off.
 For monitoring, use this command (add to .bash_aliases):
 
   alias mlogq='ls -lAtr /home/pi-star/.mlogs; ls -lA /var/log/pi-star'
-
 
 Sample result:
 
