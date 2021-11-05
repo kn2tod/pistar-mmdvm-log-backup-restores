@@ -1,6 +1,6 @@
 Pi-Star creates a number of running log files in temporary storage (tmpf) which are lost when 
 the system is shut down and restarted. Retention of these files for post analysis or to restore 
-current activity after a sudden outage is desirable.
+current activity after a sudden or planned outage is desirable.
 
 This project creates the necessary scripts and SYSTEMD units (.service and .timer) to backup
 (save) and restore the MMDVM files automatically. Backups are taken on a periodic basis and 
@@ -25,7 +25,21 @@ then
 
  sudo bash Build-MMDVM-Log-Backup-Restore-Tasks.sh
  sudo bash Build-MMDVM-Log-Systemd-Tasks.sh
- 
+
+Alternately, you can simply clone this project:
+
+ rpi-rw
+
+ git clone https://github.com/kn2tod/pistar-mmdvm-log-backup-restores.git
+
+ cd pistar-mmdvm-log-backup-restores
+
+ sudo bash Build-MMDVM-Log-Backup-Restore-Tasks.sh
+
+ sudo bash Build-MMDVM-Log-Systemd-Tasks
+
+(These two build scripts can be rerun as needed to incorporate any changes to the process.)
+
 The remaining files (mmdvm-log-* and pistar-mmdvm-log-*) in this project are included for a 
 look-see for what's going on, as these files are created by the Build-* scripts and do not
 need to be downloaded.
@@ -49,7 +63,7 @@ with the Internet so that last known (faked) time is used for the time-stamp.
 
 ---
 
-Backups are scheduled every 10 minutes and usually cover most operating sitatations.  Backups are 
+Backups are scheduled every 10 minutes and usually cover most operating situtations.  Backups are 
 also taken as part of a regulary initiated shutdown/reboot.  If the system shuts down unexpectedly
 (power outage), some log data may be lost. 
 
@@ -62,6 +76,13 @@ Aging (rotation) of the backups is performed via a script added to /etc/cron.dai
 when the normal nightly Pi-Star update processing kicks off.
 
 ---
+
+For monitoring, use this command (add to .bash_aliases):
+
+  alias mlogq='ls -lAtr /home/pi-star/.mlogs; ls -lA /var/log/pi-star'
+
+
+Sample result:
 
 total 5024
 -rw-r--r-- 1 root root 256156 Oct 11 19:55 MMDVM-2021-10-11.log

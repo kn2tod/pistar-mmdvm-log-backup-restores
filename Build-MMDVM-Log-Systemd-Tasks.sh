@@ -35,6 +35,7 @@ echo ' '                                                        >> mmdvm-log-bac
 echo '[Unit]'                                                   >  mmdvm-log-restore.service
 echo 'Description=Restore MMDVM log files at startup'           >> mmdvm-log-restore.service
 echo 'After=default.target'                                     >> mmdvm-log-restore.service
+echo 'Before=mmdvmhost.service'                                 >> mmdvm-log-restore.service
 echo ' '                                                        >> mmdvm-log-restore.service
 echo '[Service]'                                                >> mmdvm-log-restore.service
 echo 'Type=simple'                                              >> mmdvm-log-restore.service
@@ -45,15 +46,15 @@ echo '[Install]'                                                >> mmdvm-log-res
 echo 'WantedBy=default.target'                                  >> mmdvm-log-restore.service
 echo ' '                                                        >> mmdvm-log-restore.service
 # ---------------------------------------------------------------------------------------------
-echo '[Unit]'                                                   >  mmdvm-log-restore.timer
-echo 'Description=Restore MMDVM log files on startup'           >> mmdvm-log-restore.timer
-echo ' '                                                        >> mmdvm-log-restore.timer
-echo '[Timer]'                                                  >> mmdvm-log-restore.timer
-echo 'OnStartupSec=10'                                          >> mmdvm-log-restore.timer
-echo ' '                                                        >> mmdvm-log-restore.timer
-echo '[Install]'                                                >> mmdvm-log-restore.timer
-echo 'WantedBy=default.target'                                  >> mmdvm-log-restore.timer
-echo ' '                                                        >> mmdvm-log-restore.timer
+#echo '[Unit]'                                                   >  mmdvm-log-restore.timer
+#echo 'Description=Restore MMDVM log files on startup'           >> mmdvm-log-restore.timer
+#echo ' '                                                        >> mmdvm-log-restore.timer
+#echo '[Timer]'                                                  >> mmdvm-log-restore.timer
+#echo 'OnStartupSec=10'                                          >> mmdvm-log-restore.timer
+#echo ' '                                                        >> mmdvm-log-restore.timer
+#echo '[Install]'                                                >> mmdvm-log-restore.timer
+#echo 'WantedBy=default.target'                                  >> mmdvm-log-restore.timer
+#echo ' '                                                        >> mmdvm-log-restore.timer
 # ---------------------------------------------------------------------------------------------
 echo '[Unit]'                                                   >  mmdvm-log-shutdown.service
 echo 'Description=Backup MMDVM log files at Shutdown/Reboot'    >> mmdvm-log-shutdown.service
@@ -72,16 +73,17 @@ echo ' '                                                        >> mmdvm-log-shu
 sudo chown root:root mmdvm-log-backup.service
 sudo chown root:root mmdvm-log-backup.timer
 sudo chown root:root mmdvm-log-restore.service
-sudo chown root:root mmdvm-log-restore.timer
+#sudo chown root:root mmdvm-log-restore.timer
 sudo chown root:root mmdvm-log-shutdown.service
 
 sudo systemctl enable mmdvm-log-backup.service
 sudo systemctl enable mmdvm-log-backup.timer
-sudo systemctl enable mmdvm-log-restore.timer
+sudo systemctl enable mmdvm-log-restore.service
+#sudo systemctl enable mmdvm-log-restore.timer
 sudo systemctl enable mmdvm-log-shutdown.service
 
 sudo systemctl start  mmdvm-log-backup.timer
-sudo systemctl start  mmdvm-log-restore.timer
+#sudo systemctl start  mmdvm-log-restore.timer
 
 sudo systemctl daemon-reload
 
