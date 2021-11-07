@@ -1,6 +1,7 @@
-Pi-Star creates a number of running log files in temporary storage (tmpf) which are lost when
-the system is shut down and restarted. Retention of these files for post analysis or to restore
-current activity after a sudden or planned outage is desirable.
+Every time a Pi-Star system is booted, the dashboard comes up with an empty LH (Last Heard)
+list. Internally, Pi-Star creates a number of running log files in temporary storage (tmpf)
+which are lost when the system is shut down and restarted. Retention of these files for post
+analysis or to restore current activity after a sudden or planned outage is desirable.
 
 This project creates the necessary scripts and SYSTEMD units (.service and .timer) to backup
 (save) and restore the MMDVM files automatically. Backups are taken on a periodic basis and
