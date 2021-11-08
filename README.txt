@@ -45,15 +45,15 @@ need to be downloaded.
 The MMDVM log files are created by the MMDVM "hat" firmware in the /var/log/pi-star directory;
 only two or three files should be present: yesterday's file, today's file, and tomorrow's file;
 as the firmware runs on UTC, a file postfixed with tomorrow's date (but with today's create date)
-will created depending on the time zone you are operating under (all the files in /var/log/pi-star
-are time-stamped according to the current time zone). 
+will be created depending on the time zone you are operating under (all the files in 
+/var/log/pi-star are time-stamped according to the current time zone). 
 
 The files in /var/log/pi-star are aged (rotated) so no more than two or three files should be
 present at any given time.  Log files are copied to the /home/pi-star/.mlogs directory; as
-presently set up, 14 days of logs are kept.  
+presently set up, 14 days of logs are kept.
 
 In addition to the MMDVM log files, additional files are created to log shutdowns and restores:
-zero-length files (reboot-*/restore-*); because RPI's do not have a RTC, the restore event log
+zero-length files (reboot-*/restore-*); because RPi's do not have an RTC, the restore event log
 file will not have the correct time stamps, as the restore usally occurs before the system is
 resynced with the Internet so that last known (faked) time is used for the time-stamp.
 
