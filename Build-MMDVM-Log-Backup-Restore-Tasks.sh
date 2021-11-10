@@ -31,7 +31,16 @@ echo 'if [ ! -d /home/pi-star/.mlogs ]; then'                          >> pistar
 echo '  sudo mkdir /home/pi-star/.mlogs'                               >> pistar-mmdvm-log-backups
 echo 'fi'                                                              >> pistar-mmdvm-log-backups
 echo '#'                                                               >> pistar-mmdvm-log-backups
-echo 'sudo cp -p /var/log/pi-star/MMDVM* /home/pi-star/.mlogs'         >> pistar-mmdvm-log-backups
+echo '#sudo cp -p /var/log/pi-star/MMDVM* /home/pi-star/.mlogs'        >> pistar-mmdvm-log-backups
+echo 'cd /var/log/pi-star/'                                            >> pistar-mmdvm-log-backups
+echo 'for f in $(ls -tr MMDVM*)'                                       >> pistar-mmdvm-log-backups
+echo 'do'                                                              >> pistar-mmdvm-log-backups
+echo '  if [ /var/log/pi-star/$f -nt /home/pi-star/.mlogs/$f ]; then'  >> pistar-mmdvm-log-backups
+echo '    sudo cp -p /var/log/pi-star/$f /home/pi-star/.mlogs/$f'      >> pistar-mmdvm-log-backups
+echo '    echo $f "backed up"'                                         >> pistar-mmdvm-log-backups
+echo '#   echo $f "("$(stat -c %y /home/pi-star/.mlogs/$f | cut -c12-19)") backed up"' >> pistar-mmdvm-log-backups
+echo '  fi'                                                            >> pistar-mmdvm-log-backups
+echo 'done'                                                            >> pistar-mmdvm-log-backups
 echo '#'                                                               >> pistar-mmdvm-log-backups
 echo '#logger -t "[$$]" "Pi-Star --> MMDVM logs backed up"'            >> pistar-mmdvm-log-backups
 echo '#'                                                               >> pistar-mmdvm-log-backups
