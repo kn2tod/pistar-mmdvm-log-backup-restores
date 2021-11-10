@@ -80,9 +80,7 @@ For monitoring, use this command (add to .bash_aliases):
 Sample result:
 
 pi-star@pi-star-1(ro):~$ mlogq
-total 6160
--rw-r--r-- 1 root root 489864 Oct 24 19:55 MMDVM-2021-10-24.log
--rw-r--r-- 1 root root 778545 Oct 25 19:57 MMDVM-2021-10-25.log
+total 5856
 -rw-r--r-- 1 root root 227848 Oct 26 19:59 MMDVM-2021-10-26.log
 -rw-r--r-- 1 root root 445545 Oct 27 19:59 MMDVM-2021-10-27.log
 -rw-r--r-- 1 root root 546074 Oct 28 19:57 MMDVM-2021-10-28.log
@@ -98,8 +96,50 @@ total 6160
 -rw-r--r-- 1 root root      0 Nov  5 10:58 reboot-2021-11-05-10:58:52
 -rw-r--r-- 1 root root      0 Nov  5 10:59 restore-2021-11-05-10:59:18
 -rw-r--r-- 1 root root 650884 Nov  5 19:51 MMDVM-2021-11-05.log
--rw-r--r-- 1 root root 346111 Nov  6 19:47 MMDVM-2021-11-06.log
-total 980
--rw-r--r-- 1 root root 650884 Nov  5 19:51 MMDVM-2021-11-05.log
--rw-r--r-- 1 root root 348407 Nov  6 19:55 MMDVM-2021-11-06.log
+-rw-r--r-- 1 root root 351975 Nov  6 19:58 MMDVM-2021-11-06.log
+-rw-r--r-- 1 root root 660605 Nov  7 18:49 MMDVM-2021-11-07.log
+-rw-r--r-- 1 root root 260342 Nov  8 18:56 MMDVM-2021-11-08.log
+-rw-r--r-- 1 root root  29597 Nov  8 19:39 MMDVM-2021-11-09.log
+total 936
+-rw-r--r-- 1 root root 660605 Nov  7 18:49 MMDVM-2021-11-07.log
+-rw-r--r-- 1 root root 260342 Nov  8 18:56 MMDVM-2021-11-08.log
+-rw-r--r-- 1 root root  31047 Nov  8 19:42 MMDVM-2021-11-09.log
 
+Sample (extract) from system logs:
+
+pi-star@pi-star-1(ro):~$ grep -shie "MMDVM" {/var/log/syslog.1,/var/log/syslog} 
+Nov  9 13:20:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 13:20:02 pi-star-9 pistar-mmdvm-log-backups[5138]: MMDVM-2021-11-09.log backed up
+Nov  9 13:20:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 13:30:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 13:30:02 pi-star-9 pistar-mmdvm-log-backups[14346]: MMDVM-2021-11-09.log backed up
+Nov  9 13:30:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 13:40:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 13:40:01 pi-star-9 pistar-mmdvm-log-backups[23556]: MMDVM-2021-11-09.log backed up
+Nov  9 13:40:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 13:50:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 13:50:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:00:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:00:01 pi-star-9 pistar-mmdvm-log-backups[9641]: MMDVM-2021-11-09.log backed up
+Nov  9 14:00:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:10:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:10:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:20:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:20:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:30:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:30:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:40:02 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:40:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 14:50:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 14:50:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 15:00:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 15:00:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 15:10:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 15:10:01 pi-star-9 pistar-mmdvm-log-backups[9479]: MMDVM-2021-11-09.log backed up
+Nov  9 15:10:01 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 15:20:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 15:20:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 15:30:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 15:30:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+Nov  9 15:40:02 pi-star-9 systemd[1]: Started Backup MMDVM log files.
+Nov  9 15:40:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
