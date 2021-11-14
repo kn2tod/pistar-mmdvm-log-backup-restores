@@ -13,6 +13,9 @@ cd /usr/local/sbin
 echo '#!/bin/bash'                                                      > pistar-mmdvm-log-backups
 echo '# Backup MMDVM logs during shutdown/reboots'                     >> pistar-mmdvm-log-backups
 echo '#'                                                               >> pistar-mmdvm-log-backups
+echo 'if [ ! -d /var/log/pi-star ]; then'                              >> pistar-mmdvm-log-backups
+echo '  exit 0'                                                        >> pistar-mmdvm-log-backups
+echo 'fi'                                                              >> pistar-mmdvm-log-backups
 echo '#rpi-rw'                                                         >> pistar-mmdvm-log-backups
 echo 'xro=$(grep "/dev/root" /proc/mounts | sed -n "s/.*\(r[ow]\).*/\1/p")'  >> pistar-mmdvm-log-backups
 echo 'if [ "$xro" == "ro" ]; then'                                     >> pistar-mmdvm-log-backups
@@ -37,8 +40,8 @@ echo 'for f in $(ls -tr MMDVM*)'                                       >> pistar
 echo 'do'                                                              >> pistar-mmdvm-log-backups
 echo '  if [ /var/log/pi-star/$f -nt /home/pi-star/.mlogs/$f ]; then'  >> pistar-mmdvm-log-backups
 echo '    sudo cp -p /var/log/pi-star/$f /home/pi-star/.mlogs/$f'      >> pistar-mmdvm-log-backups
-echo '    echo $f "backed up"'                                         >> pistar-mmdvm-log-backups
-echo '#   echo $f "("$(stat -c %y /home/pi-star/.mlogs/$f | cut -c12-19)") backed up"' >> pistar-mmdvm-log-backups
+echo '#   echo $f "backed up"'                                         >> pistar-mmdvm-log-backups
+echo '    echo $f "("$(stat -c %y /home/pi-star/.mlogs/$f | cut -c12-19)") backed up"' >> pistar-mmdvm-log-backups
 echo '  fi'                                                            >> pistar-mmdvm-log-backups
 echo 'done'                                                            >> pistar-mmdvm-log-backups
 echo '#'                                                               >> pistar-mmdvm-log-backups
@@ -135,7 +138,7 @@ echo '  m0=$1'                                                         >> pistar
 echo 'fi'                                                              >> pistar-mmdvm-log-backup-age
 echo 'm1=$(ls ${file}/MMDVM* | wc -l)   # total number of files'       >> pistar-mmdvm-log-backup-age
 echo 'm2=$(expr ${m1} - ${m0})          # number to be deleted'        >> pistar-mmdvm-log-backup-age
-echo 'if [ ${m2} -gt 0 ]; then'                                        >> pistar-mmdvm-log-backup-age
+echo 'if [ ${m2} -gt 0 -a ${m0} -gt 0 ]; then'                         >> pistar-mmdvm-log-backup-age
 echo '  filed=$(ls -tr ${file}/MMDVM* | head -n ${m2})'                >> pistar-mmdvm-log-backup-age
 echo '  for f in ${filed}; do'                                         >> pistar-mmdvm-log-backup-age
 echo '#   echo $f'                                                     >> pistar-mmdvm-log-backup-age
