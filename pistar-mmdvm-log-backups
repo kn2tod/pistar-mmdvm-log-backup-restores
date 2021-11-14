@@ -2,6 +2,9 @@
 # Backup MMDVM logs during shutdown/reboots
 #
 #rpi-rw
+if [ ! -d /var/log/pi-star ]; then
+  exit 0
+fi
 xro=$(grep "/dev/root" /proc/mounts | sed -n "s/.*\(r[ow]\).*/\1/p")
 if [ "$xro" == "ro" ]; then
    sudo mount -o remount,rw / ; sudo mount -o remount,rw /boot
