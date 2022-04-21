@@ -137,3 +137,16 @@ Nov  9 15:30:01 pi-star-9 systemd[1]: Started Backup MMDVM log files.
 Nov  9 15:30:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
 Nov  9 15:40:02 pi-star-9 systemd[1]: Started Backup MMDVM log files.
 Nov  9 15:40:02 pi-star-9 systemd[1]: mmdvm-log-backup.service: Succeeded.
+
+------
+
+Note: here is another approach to the problem of log retention: 
+
+   <https://vk3erw.com/pi-star/pi-star-how-to-preserve-log-files-between-reboots>
+
+This involves changing the location of the log files from temp (virtual) memory to 
+regular disk storage but does so by sacrificing some of the advantages of using
+virtual memory. This works fine for faster Pi's with faster storage but can be
+problematic for slower combinations of processor and storage.  The rentention 
+periods for backups in this approach are also different than those provided in 
+the scripts listed above.
