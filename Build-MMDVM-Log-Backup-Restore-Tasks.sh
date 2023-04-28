@@ -86,6 +86,8 @@ echo '    fi'                                                          >> pistar
 echo '#'                                                               >> pistar-mmdvm-log-restores
 echo '    if [ ! -d /var/log/pi-star ]; then'                          >> pistar-mmdvm-log-restores
 echo '       sudo mkdir /var/log/pi-star'                              >> pistar-mmdvm-log-restores
+echo '       sudo chown root:mmdvm /var/log/pi-star'                   >> pistar-mmdvm-log-restores
+echo '       sudo chmod 775 /var/log/pi-star'                          >> pistar-mmdvm-log-restores
 echo '    fi'                                                          >> pistar-mmdvm-log-restores
 echo '#'                                                               >> pistar-mmdvm-log-restores
 echo '    n=3'                                                         >> pistar-mmdvm-log-restores
