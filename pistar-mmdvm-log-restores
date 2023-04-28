@@ -25,7 +25,9 @@ if [ -d /home/pi-star/.mlogs ]; then
 #
     if [ ! -d /var/log/pi-star ]; then
        sudo mkdir /var/log/pi-star
-    fi
+       sudo chown root:mmdvm /var/log/pi-star
+       sudo chmod 775 /var/log/pi-star
+fi
 #
     n=3
     if [ $all == 1 ]; then
